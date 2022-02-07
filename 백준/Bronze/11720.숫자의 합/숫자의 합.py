@@ -1,10 +1,6 @@
-N = int(input()) # 숫자의 개수 N
-num = int(input())
-
-count = 0
-
-for i in range(0, N):
-    count += num % 10
-    num //= 10
-
-print(count)
+s = input()
+N = str(input())
+result = 0
+for i in N:
+    result += int(i)
+print(result)
