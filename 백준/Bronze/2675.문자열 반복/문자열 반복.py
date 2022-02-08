@@ -1,8 +1,8 @@
-import sys
-T = int(sys.stdin.readline())
-for case in range(T):
-    R, Test_case = sys.stdin.readline().split()
-    word = ''
-    for alpha in Test_case:
-        word += alpha*int(R)
-    print(word)
+T = int(input())
+
+for i in range(0, T):
+    R, S = input().split()
+    R = int(R)
+    for j in range(0, len(S)):
+        print(S[j]*R, end='')
+    print('')
