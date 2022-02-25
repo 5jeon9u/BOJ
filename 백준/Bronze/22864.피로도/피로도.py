@@ -1,19 +1,19 @@
 A, B, C, M = map(int, input().split())
-cnt = 0
-tired = 0
-done = 0
+ret = 0
+stress = 0
+i = 1
 
-if A > M :
+if A > M:
     print(0)
 else:
-    while cnt < 24:
-        cnt += 1
-        if tired <= M - A:
-            done += B
-            tired += A
+    while i < 25:
+        i += 1
+        if stress + A <=  M:
+            ret += B
+            stress += A
         else:
-            if tired - C >= 0:
-                tired -= C
+            if stress >= C:
+                stress -= C
             else:
-                tired = 0
-    print(done)
+                stress = 0
+    print(ret)
