@@ -23,7 +23,7 @@ for i in range(S):
 
                 else:
                     switch[k + start], switch[start - k] = 0, 0
-            else:
+            if k + start > N or start - k <= 0 or switch[k + start] != switch[start - k]:
                 break
 
 
