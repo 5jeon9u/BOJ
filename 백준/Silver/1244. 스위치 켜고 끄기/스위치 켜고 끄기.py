@@ -1,36 +1,37 @@
-def switch(x):
-    if light[x] == 0:
-        light[x] = 1
-    else:
-        light[x] = 0
+N = int(input())
 
-N = int(input()) # 전구의 수
-light = [0] + list(map(int, input().split())) # 전구 상태
-cnt = int(input()) # 학생 수
+switch = [0] + list(map(int, input().split()))
 
-# [1] 학생들의 스위치 조작
-for i in range(cnt):
-    sex, num = map(int, input().split())
+S = int(input()) #총 학생수
 
-    # [2] 남학생일 경우
-    if sex == 1:
-        n = 1
-        # 상태를 바꿀 전구는 전구의 수 범위 내에 있어야 함
-        while num * n <= N:
-            switch(num * n)
-            n += 1
-    # [3] 여학생일 경우
-    elif sex == 2:
-        switch(num)
-        l = 1
-        # 상태를 바꿀 전구는 전구의 수 범위 내에 있어야 함
-        # 받은 스위치 번호를 기준으로 좌우가 대칭이어야 함
-        while 0 < num - l and num + l <= N and light[num - l] == light[num + l]:
-            switch(num - l)
-            switch(num + l)
-            l += 1
+for i in range(S):
+    student, start = map(int, input().split())
 
-for i in range(1, N+1):
-    print(light[i], end = ' ')
-    if i % 20 == 0 :
-        print()
+    if student == 1:
+         button = N // start
+         for j in range(1, button+1):
+             if switch[j * start] == 0:
+                 switch[j * start] = 1
+             else:
+                 switch[j * start] = 0
+
+    if student == 2:
+        for k in range(0, start):
+            if k + start <= N and start - k > 0 and switch[k + start] == switch[start - k]:
+                if switch[k + start] == 0:
+                    switch[k + start], switch[start - k] = 1, 1
+
+                else:
+                    switch[k + start], switch[start - k] = 0, 0
+            else:
+                break
+
+
+result = [] #결과값 출력
+for num in range(1, len(switch)):
+    result.append(switch[num])
+    if len(result) == 20:
+        print(*result)
+        result = []
+if result:
+    print(*result)
