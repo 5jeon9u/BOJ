@@ -10,6 +10,8 @@ n = int(sys.stdin.readline())
 num_list = [0] * 10001
 
 for _ in range(n):
+    # 주어진 수를 인덱스로 하는 배열 생성
+    # 각 수의 수만큼 배열의 값 증가
     num_list[int(sys.stdin.readline())] += 1
 
 for i in range(10001):
